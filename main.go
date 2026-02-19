@@ -6,13 +6,13 @@ import (
 )
 
 func main() {
-  currencyRUB := map[string]float64{
+	currencyRUB := map[string]float64{
 		"rub": 1,
 		"usd": 77.0,
 		"eur": 91.70,
 	}
 	from, amount, to := user()
-	result := calculate(&from, &amount, &to, currencyRUB)
+	result := calculate(&from, &amount, &to, &currencyRUB)
 	fmt.Println(result)
 }
 
@@ -55,9 +55,9 @@ func user() (string, float64, string) {
 	return from, amount, to
 }
 
-func calculate(from *string, amount *float64, to *string, currencyRUB map[string]float64) float64 {
-	
-	result := *amount * currencyRUB[*from] / currencyRUB[*to]
+func calculate(from *string, amount *float64, to *string, currencyRUB *map[string]float64) float64 {
+
+	result := *amount * (*currencyRUB)[*from] / (*currencyRUB)[*to]
 
 	return result
 
